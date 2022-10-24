@@ -158,8 +158,7 @@
                  * @brief Give you the minimun set of elements for a given value
                  * 
                  * @param amount Goal value.
-                 * @param vector Elemente to reach the goal. If not given it will use
-                 * the vector {500, 200, 100, 50, 20, 10, 5, 2, 1}
+                 * @param vector Elemente to reach the goal.
                  * @return std::vector<T>. If there is not a solution, the first element
                  * is a -1.
                  */

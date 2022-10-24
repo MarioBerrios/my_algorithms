@@ -159,7 +159,21 @@ namespace my_algorithms {
         T x, s = 0;
 
         while(s != amount){
-            //TODO
+            x = 0;
+            for (auto item: vector){
+                if (item > x && s + item <= amount)
+                    x = item
+            }
+            if (x != 0){
+                solution.push_back(x);
+                s += x;
+            } else {
+                solution.clear();
+                return solution.push_back(-1);
+            }
+            
         }
+
+        return solution;
     }
 }
