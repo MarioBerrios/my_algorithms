@@ -64,53 +64,107 @@
          */
         template<class T>
         class DivideAndConquer{
-            
-            /**
-             * @brief Search for the given x in the given vector.
-             * 
-             * @param vector Vector where the search is done.
-             * @param x Searched value.
-             * @return int Position where the value is stored within the
-             * vector. Return -1 if the value is not find.
-             */
-            static int binary_search(const std::vector<T> &vector, T x);
+            public:
+                /**
+                 * @brief Search for the given x in the given vector.
+                 * 
+                 * @param vector Vector where the search is done.
+                 * @param x Searched value.
+                 * @return int Position where the value is stored within the
+                 * vector. Return -1 if the value is not find.
+                 */
+                static int binary_search(const std::vector<T> &vector, T x);
 
-            /**
-             * @brief Seatch for the maximun and minimun of the given vector.
-             * 
-             * @param vector Vector where the search is done.
-             * @param max Variable where the max is going to be stored.
-             * @param min Variable where the min is going to be stored.
-             */
-            static void max_min (const std::vector<T> &vector, T &max, T &min);
+                /**
+                 * @brief Seatch for the maximun and minimun of the given vector.
+                 * 
+                 * @param vector Vector where the search is done.
+                 * @param max Variable where the max is going to be stored.
+                 * @param min Variable where the min is going to be stored.
+                 */
+                static void max_min (const std::vector<T> &vector, T &max, T &min);
 
-            /**
-             * @brief Seatch for the maximun and minimun of the given vector.
-             * 
-             * @param vector Vector where the search is done.
-             * @param i Start positition of the vector.
-             * @param j End position of the vector. 
-             * @param max Variable where the max is going to be stored.
-             * @param min Variable where the min is going to be stored.
-             */
-            static void max_min (const std::vector<T> &vector, const int i, const int j,
-            T &max, T &min);
+                /**
+                 * @brief Seatch for the maximun and minimun of the given vector.
+                 * 
+                 * @param vector Vector where the search is done.
+                 * @param i Start positition of the vector.
+                 * @param j End position of the vector. 
+                 * @param max Variable where the max is going to be stored.
+                 * @param min Variable where the min is going to be stored.
+                 */
+                static void max_min (const std::vector<T> &vector, const int i, const int j,
+                T &max, T &min);
 
-            /**
-             * @brief Sort a vector.
-             * 
-             * @param vector Vector to be sorted.
-             */
-            static void quicksort(std::vector<T> &vector);
+                /**
+                 * @brief Sort a vector.
+                 * 
+                 * @param vector Vector to be sorted.
+                 */
+                static void quicksort(std::vector<T> &vector);
 
-            /**
-             * @brief Sort a vector.
-             * 
-             * @param vector Vector to be sorted.
-             * @param i Start positition of the vector.
-             * @param j End position of the vector. 
-             */
-            static void quicksort(std::vector<T> &vector, int i, int j);
+                /**
+                 * @brief Sort a vector.
+                 * 
+                 * @param vector Vector to be sorted.
+                 * @param i Start positition of the vector.
+                 * @param j End position of the vector. 
+                 */
+                static void quicksort(std::vector<T> &vector, const int i, 
+                    const int j);
+
+                /**
+                 * @brief Search for the smallest k numbers in a vector
+                 * 
+                 * @param vector Vector where the seach is performed.
+                 * @param k Number of smallest numbers.
+                 * @return std::vector<T> Vector of size k containing the smallest 
+                 * numbers.
+                 */
+                static std::vector<T> kminor(std::vector<T> &vector, const int k);
+
+                /**
+                 * @brief Search for the smallest k numbers in a vector
+                 * 
+                 * @param vector Vector where the seach is performed.
+                 * @param k Number of smallest numbers.
+                 * @param i Start positition of the vector.
+                 * @param j End position of the vector. 
+                 * @return std::vector<T> 
+                 */
+                static std::vector<T> kminor(std::vector<T> &vector, const int k, 
+                const int i, const int j);
+
+                /**
+                 * @brief Calculate the power of a number
+                 * 
+                 * @param b Base of the power
+                 * @param e Exponent of the power
+                 * @return long double
+                 */
+                long double power(const T b, const T e);
+        };
+
+        /**
+         * @brief Group of alogrithms that the functionality is
+         * based in the greedy method.
+         * 
+         */
+        template<class T>
+        class Greedy{
+            public:
+
+                /**
+                 * @brief Give you the minimun set of elements for a given value
+                 * 
+                 * @param amount Goal value.
+                 * @param vector Elemente to reach the goal. If not given it will use
+                 * the vector {500, 200, 100, 50, 20, 10, 5, 2, 1}
+                 * @return std::vector<T>. If there is not a solution, the first element
+                 * is a -1.
+                 */
+                std::vector<T> change(const T amount, 
+                    const std::vector<T> &vector = {500, 200, 100, 50, 20, 10, 5, 2, 1});
         };
     }
 

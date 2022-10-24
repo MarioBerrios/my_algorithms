@@ -55,7 +55,7 @@ namespace my_algorithms {
 
     template<class T>
     void DivideAndConquer<T>::max_min (const std::vector<T> &vector, T &max, T &min){
-        max_min(vector, 0, vectro.size()-1, max, min);
+        max_min(vector, 0, vector.size()-1, max, min);
     }
 
     template<class T>
@@ -79,13 +79,14 @@ namespace my_algorithms {
 
     template<class T>
     void DivideAndConquer<T>::quicksort(std::vector<T> &vector){
-        quicksort(vector, 0, vector.size());
+        quicksort(vector, 0, vector.size()-1);
     }
     
     template<class T>
-    void DivideAndConquer<T>::quicksort(std::vector<T> &vector, int i, int j){
+    void DivideAndConquer<T>::quicksort(std::vector<T> &vector, const int i, 
+    const int j){
         int i_ = i, j_ = j, k;
-        T x = vector[(i + j)/2];
+        T aux, x = vector[(i + j)/2];
 
         do{
             while (vector[i_] < x)
@@ -93,7 +94,7 @@ namespace my_algorithms {
             while (vector[j_] > x)
                 j_--
             if (i_ <= j_){
-                T aux = vector[i_];
+                aux = vector[i_];
                 vector[i_] = vector[j_];
                 vector[j_] = aux;
                 i_++;
@@ -105,5 +106,60 @@ namespace my_algorithms {
             quicksort(vector, i, j_);
         if (i_ < j)
             quicksort(vector, i_, j)
+    }
+
+    template<class T>
+    std::vector<T> DivideAndConquer<T>::kminor(std::vector<T> &vector, const int k){
+        kminor(vector, k, 0, vector.size()-1);
+    }
+
+    template<class T>
+    std::vector<T> DivideAndConquer<T>::kminor(std::vector<T> &vector, const int k, 
+    const int i, const int j){
+        int i_ = i, j_ = j, k;
+        T aux, x = vector[(i + j)/2];
+
+        do{
+            while (vector[i_] < x)
+                i_++
+            while (vector[j_] > x)
+                j_--
+            if (i_ <= j_){
+                aux = vector[i_];
+                vector[i_] = vector[j_];
+                vector[j_] = aux;
+                i_++;
+                j_--;
+            }
+        } while ( i_ <= j_);
+
+        if (k == i_)
+            return std::vector<T> (vector.begin(), vector.begin()+k-1);
+        else if (k < i_)
+            kminor(vector, k, i, j_):
+        else
+            kminor(vector, k, i_, j);
+    }
+
+    template<class T>
+    long double DivideAndConquer<T>::power(const T b, const T e){
+        if (e == 1)
+            return b;
+        else if (e % 2 == 0){
+            long double aux = power(b, e/2);
+            return aux * aux;
+        } else {
+            return a * power(b, e-1);
+        }
+    }
+
+    template<class T>
+    std::vector<T> Greedy<T>::change(const T amount, const std::vector<T> &vector){
+        std::vector<T> solution;
+        T x, s = 0;
+
+        while(s != amount){
+            //TODO
+        }
     }
 }
