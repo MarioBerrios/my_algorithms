@@ -13,7 +13,7 @@ namespace my_algorithms {
     }
 
     long double Recursive::fib (const int n, std::vector<long double> &table){
-        if (table.size() < n){
+        if (table.size() < (unsigned int) n){
             table.push_back(fib(n-1, table) + table[n-3]);
         }
         return table[n-1];
@@ -90,9 +90,9 @@ namespace my_algorithms {
 
         do{
             while (vector[i_] < x)
-                i_++
+                i_++;
             while (vector[j_] > x)
-                j_--
+                j_--;
             if (i_ <= j_){
                 aux = vector[i_];
                 vector[i_] = vector[j_];
@@ -105,7 +105,7 @@ namespace my_algorithms {
         if (i < j_)
             quicksort(vector, i, j_);
         if (i_ < j)
-            quicksort(vector, i_, j)
+            quicksort(vector, i_, j);
     }
 
     template<class T>
@@ -116,14 +116,14 @@ namespace my_algorithms {
     template<class T>
     std::vector<T> DivideAndConquer<T>::kminor(std::vector<T> &vector, const int k, 
     const int i, const int j){
-        int i_ = i, j_ = j, k;
+        int i_ = i, j_ = j;
         T aux, x = vector[(i + j)/2];
 
         do{
             while (vector[i_] < x)
-                i_++
+                i_++;
             while (vector[j_] > x)
-                j_--
+                j_--;
             if (i_ <= j_){
                 aux = vector[i_];
                 vector[i_] = vector[j_];
@@ -136,7 +136,7 @@ namespace my_algorithms {
         if (k == i_)
             return std::vector<T> (vector.begin(), vector.begin()+k-1);
         else if (k < i_)
-            kminor(vector, k, i, j_):
+            kminor(vector, k, i, j_);
         else
             kminor(vector, k, i_, j);
     }
@@ -149,7 +149,7 @@ namespace my_algorithms {
             long double aux = power(b, e/2);
             return aux * aux;
         } else {
-            return a * power(b, e-1);
+            return b * power(b, e-1);
         }
     }
 
@@ -162,7 +162,7 @@ namespace my_algorithms {
             x = 0;
             for (auto item: vector){
                 if (item > x && s + item <= amount)
-                    x = item
+                    x = item;
             }
             if (x != 0){
                 solution.push_back(x);
