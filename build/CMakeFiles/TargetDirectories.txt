@@ -1,0 +1,3 @@
+/home/mberrios/proyectos/librerias/algoritmos/build/CMakeFiles/main.dir
+/home/mberrios/proyectos/librerias/algoritmos/build/CMakeFiles/edit_cache.dir
+/home/mberrios/proyectos/librerias/algoritmos/build/CMakeFiles/rebuild_cache.dir

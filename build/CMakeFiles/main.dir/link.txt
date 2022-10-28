@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wall -lrt CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/my_algorithms.cpp.o -o main 
