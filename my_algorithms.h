@@ -2,6 +2,20 @@
 #define MY_ALGORITHMS_H
 
     namespace my_algorithms{
+
+        /**
+         * @brief Struct used in the bag algorithm. It contains
+         * the volume, prices and status of the current item.
+         * The status can be 0 (not used), 1 (partially used) or
+         * 2 (totally used)
+         * 
+         */
+        typedef struct item {
+            long double volume;
+            long double price;
+            int status;
+        } Item;
+
         /**
          * @brief Group of alogrithms that the functionality is
          * based in the recursive method.
@@ -150,7 +164,6 @@
          * based in the greedy method.
          * 
          */
-        template<class T>
         class Greedy{
             public:
 
@@ -162,8 +175,17 @@
                  * @return std::vector<T>. If there is not a solution, the first element
                  * is a -1.
                  */
-                std::vector<T> change(const T amount, 
-                    const std::vector<T> &vector = {500, 200, 100, 50, 20, 10, 5, 2, 1});
+                std::vector<long double> change(const long double amount, 
+                    const std::vector<long double> &vector = {500, 200, 100, 50, 20, 10, 5, 2, 1});
+
+                /**
+                 * @brief Select the items needed to fill the volumen of the bag with
+                 * the hights price possible.
+                 * 
+                 * @param volumen Volumen of the bag.
+                 * @param items vector with all the items available to fill the bag.
+                 */
+                void bag(const double long volumen, std::vector<Item> &items);
         };
     }
 
