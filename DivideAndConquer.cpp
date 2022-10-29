@@ -1,40 +1,6 @@
-#include <vector>
-#include "my_algorithms.h"
+#include "DivideAndConquer.hpp"
 
 namespace my_algorithms {
-
-    long double Recursive::fib (const int n, const int start){
-        if (n <= 2 && !start){
-            return n-1;
-        } else if (n <= 2 && start){
-            return n;
-        } else {
-            return fib(n-1, start) + fib(n-2, start);
-        }
-    }
-
-    long double Recursive::fib (const int n, std::vector<long double> &table){
-        if (table.size() < (unsigned int) n){
-            table.push_back(fib(n-1, table) + table[n-3]);
-        }
-        return table[n-1];
-    }
-
-    long double Recursive::city_map (const int x, const int y){
-        if (x == 0 || y == 0) {
-            return 1;
-        } else {
-            return city_map(x-1, y) + city_map(x, y-1);
-        }
-    }
-
-    long double Recursive::city_map(const int x, const int y,
-    std::vector< std::vector<long double> > matrix){
-        if (matrix[x][y] == -1){
-            matrix[x][y] = city_map(x-1, y, matrix) + city_map(x, y-1, matrix);
-        }
-        return matrix[x][y];
-    }
 
     template<class T>
     int DivideAndConquer<T>::binary_search(const std::vector<T> &vector, T x){
@@ -152,65 +118,5 @@ namespace my_algorithms {
         } else {
             return b * power(b, e-1);
         }
-    }
-
-    std::vector<long double> Greedy::change(const long double amount, 
-    const std::vector<long double> &vector){
-        std::vector<long double> solution;
-        long double x, s = 0;
-
-        while(s != amount){
-            x = 0;
-            for (auto item: vector){
-                if (item > x && s + item <= amount)
-                    x = item;
-            }
-            if (x != 0){
-                solution.push_back(x);
-                s += x;
-            } else {
-                solution.clear();
-                return solution.push_back(-1);
-            }
-            
-        }
-
-        return solution;
-    }
-
-
-    void Greedy::bag(const long double volumen, std::vector<Item> &items){
-        long double max_price, remain = volume;
-        int max_material;
-        bool mat_available;
-
-        for (auto item: items)
-            item.status = 0;
-
-        do{
-            max_price = 0;
-            max_material = 0;
-            mat_available = false;
-
-            for (int i = 0; i < (int) items.size(); i++){
-                if (items[i].status == 0){
-                    mat_available = true;
-                    if (items[i].price > max_price){
-                        max_price = items[i].price;
-                        max_material = i;
-                    }
-                }
-            }
-
-            if (mat_available == true){
-                if (remain >= items[max_material].volume){
-                    items[max_material].status = 2;
-                    remain -= items[max_material].volume;
-                } else {
-                    items[max_material].status = 1;
-                    remain = 0;
-                }
-            }
-        } while (remain > 0 || mat_available)
     }
 }
